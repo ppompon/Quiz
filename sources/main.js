@@ -1,4 +1,4 @@
-const questions = [
+const package = [
     {
         question: "Qual o país com a maior extensão territorial?" ,
         options: ["Rússia", "Brasil", "Canadá", "África"],
@@ -31,6 +31,20 @@ const questions = [
     }
 ]
 
+let questionText = document.querySelector("#question");
 let score = document.querySelector("#score");
 let error = document.querySelector("#wrong");
-let question = document.querySelector("#question");
+let next = document.querySelector("#next");
+let options = document.querySelectorAll(".option");
+
+let currentIndex = 0;
+
+questionText.textContent = package[currentIndex].question;
+
+for (let currentIndex = 0; currentIndex < options.length; currentIndex++) {
+    options[currentIndex].textContent = package[currentIndex].options[currentIndex];
+    }
+function testa(){
+    alert("test");
+}
+next.addEventListener("click", testa);
