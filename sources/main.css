@@ -41,6 +41,7 @@
 }
 .option:hover{
     background-color: #bcbcbc;
+    cursor: pointer;
 }
 .optionsArea{
     display: flex;
