@@ -4,9 +4,6 @@
     margin: 0;
     padding: 0;
 }
-:root {
-    --area-border: 3px solid red; 
-}
 
 .screenView{
     height: 100vh;
@@ -17,9 +14,10 @@
 }
 /*GERAL*/
 
-/*QUIZ AREA*/
+/*QUIZ*/
 .quizArea{
     width: 40%;
+    height: 550px;
     border-radius: 25px;
     box-shadow: 0px 0px 15px;
     background-color: #ffffff;
@@ -28,28 +26,31 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
-/*QUIZ AREA*/
+/*QUIZ*/
 
-/*OPTIONS AREA*/
+/*OPTIONS*/
 .option{
     border: none;
     border-radius: 5px;
     background-color: #e7e7e7;
     font-size: 20px;
     padding: 10px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: transform 0.15s;
 }
 .option:hover{
     background-color: #bcbcbc;
     cursor: pointer;
+    transform: scale(1.1);
 }
 .optionsArea{
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 40px;
 }
-/*OPTIONS AREA*/
+/*OPTIONS*/
 
 /*NEXT BUTTON*/
 #next{
@@ -59,13 +60,16 @@
     background-color: #008cff;
     font-size: 25px;
     padding: 20px;
+    transition: transform 0.15s, background-color 0.15s;
 }
 #next:hover{
     background-color: #0062b3;
+    cursor: pointer;
+    transform: scale(1.05);
 }
 /*NEXT BUTTON*/
 
-/*TEXTS AREA*/
+/*TEXTS*/
 #score{
     color: #008cff;
     font-size: 25px;
@@ -80,9 +84,14 @@
     color: #303030;
     font-size: 25px;
     margin-top: 20px;
+    margin-bottom:20px
+}
+#observation{
+    font-size: 22px;
+    height: 30px;
 }
 h2{
     font-size: 60px;
     margin-bottom: 20px;
 }
-/*TEXTS AREA*/
+/*TEXTS*/
