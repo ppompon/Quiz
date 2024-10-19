@@ -31,42 +31,72 @@ const data = [
     }
 ]
 
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-
-// loadData ✓
-    // Save data to var
-    // Show question according to index
-    // Show choices according to index
-// verifyAnswer
-// selectedChoice
-// nextData
-// resetQuiz
-
-
+//---------------------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------------------------------------------------------//
 
 let questionText = document.querySelector("#question");
-let score = document.querySelector("#score");
-let error = document.querySelector("#wrong");
+let scoreId = document.querySelector("#score");
+let errorId = document.querySelector("#wrong");
 let next = document.querySelector("#next");
+let observation = document.querySelector("#observation");
 let options = document.querySelectorAll(".option");
 
-let currentIndex = 0;
+let currentIndex = -1;
+let score = 0;
+let errors = 0;
+let selected = false;
 
 function loadData(){
+    selected = false;
+    
+    currentIndex++;
     const package = data[currentIndex];
+    observation.textContent = "";
     questionText.textContent = package.question;
     
     for(let i = 0; i < options.length; i++) {
         options[i].textContent = package.choices[i];
     }
-}
+    }
 
 function verifyAnswer(e){
-    console.log(e.target.innerText);
+    const package = data[currentIndex];
+    let answer = e.target.innerText;
+    
+    
+    if(selected) {
+        observation.textContent = "Go to next question!";
+        return;
+    }
+
+    if (answer == package.correct) {
+        score++;
+        scoreId.textContent = "Score: " + score;
+        observation.textContent = "You got it right! That's correct!";
+    } else {
+        errors++;
+        errorId.textContent = "Errors: " + errors;
+        observation.textContent = "Wrong! The correct answer is: " + package.correct;
+        }
+        selected = true;
+    }
+
+function finish(){
+    if (currentIndex == 5) {
+        observation.textContent = "Congratulations!!";
+    } else {
+        loadData();
+    }
 }
 
+next.addEventListener("click", function(){
+    if(!selected){
+        observation.textContent = "Select an option first!";
+    } else {
+        selected = false;
+        finish();
+    }
+});
 options.forEach((button) => button.addEventListener("click", verifyAnswer));
-
 loadData();
